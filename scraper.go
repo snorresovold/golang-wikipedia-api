@@ -26,7 +26,7 @@ func check_site(x string) { // x is a url to the site you want to scrape
 	c.OnHTML("p", func(e *colly.HTMLElement) {
 		fmt.Println(e.Text)
 		writer.Write([]string{
-			e.Attr("p"),
+			e.Text,
 		})
 	})
 	// before making a request print "Visiting ..."
