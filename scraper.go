@@ -12,7 +12,7 @@ import (
 func check_site(x string) { // x is a url to the site you want to scrape
 	c := colly.NewCollector()
 
-	fName := "data.csv"
+	fName := x + ".csv"
 	file, err := os.Create(fName)
 	if err != nil {
 		log.Fatalf("Could not create file, err :%q", err)
