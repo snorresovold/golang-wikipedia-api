@@ -12,7 +12,7 @@ import (
 func check_site(x string) { // x is a url to the site you want to scrape
 	c := colly.NewCollector()
 
-	fName := x + ".csv"
+	fName := "data.csv"
 	file, err := os.Create(fName)
 	if err != nil {
 		log.Fatalf("Could not create file, err :%q", err)
@@ -24,7 +24,7 @@ func check_site(x string) { // x is a url to the site you want to scrape
 	defer writer.Flush()
 	// On every a element which has href attribute call callback
 	c.OnHTML("p", func(e *colly.HTMLElement) {
-		fmt.Println(e.Text)
+		//fmt.Println(e.Text)
 		writer.Write([]string{
 			e.Text,
 		})

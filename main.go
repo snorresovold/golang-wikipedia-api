@@ -13,12 +13,14 @@ func main() {
 	url := "The_Batman_(film)"
 	check_site(url)
 	router := gin.Default()
-	router.GET("/"+url, getArticle(url))
+	router.GET("/"+url, getArticle)
 	router.Run("localhost:8080")
 }
 
 func getArticle(c *gin.Context) {
-	csvFile, err := os.Open(url + ".csv")
+	url := c.Request.URL.Query()
+	fmt.Println("sus", url)
+	csvFile, err := os.Open("data.csv")
 	if err != nil {
 		fmt.Println(err)
 	}
