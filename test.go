@@ -16,6 +16,10 @@ func main() {
 	check_site(url)
 	router := gin.Default()
 	router.GET("/"+url, getArticle)
+	router.GET("/Foo", func(c *gin.Context) {
+		fmt.Println("the url is:", c.Request.Host+c.Request.URL.Path)
+	})
+	fmt.Println(url)
 	router.Run("localhost:8080")
 }
 
@@ -45,7 +49,6 @@ func check_site(x string) { // x is a url to the site you want to scrape
 	})
 	c.Visit("https://en.wikipedia.org/wiki/" + x) // checks x aka the URL
 }
-
 func getArticle(c *gin.Context) {
 	csvFile, err := os.Open("data" + "csv")
 	if err != nil {
@@ -59,5 +62,3 @@ func getArticle(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, csvLines)
 	defer csvFile.Close()
 }
-
-func getArticle
