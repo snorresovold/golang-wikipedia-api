@@ -1,16 +1,6 @@
 package main
 
-import (
-	"encoding/csv"
-	"fmt"
-	"log"
-	"net/http"
-	"os"
-
-	"github.com/gin-gonic/gin"
-	"github.com/gocolly/colly"
-)
-
+/*
 func main() {
 	url := "The_Batman_(film)"
 	check_site(url)
@@ -63,3 +53,4 @@ func getArticle(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, csvLines)
 	defer csvFile.Close()
 }
+*/
