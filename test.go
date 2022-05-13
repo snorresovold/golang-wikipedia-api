@@ -16,8 +16,9 @@ func main() {
 	check_site(url)
 	router := gin.Default()
 	router.GET("/"+url, getArticle)
-	router.GET("/Foo", func(c *gin.Context) {
-		fmt.Println("the url is:", c.Request.Host+c.Request.URL.Path)
+	router.GET("", func(c *gin.Context) {
+		x := c.Request.Host + c.Request.URL.Path
+		fmt.Println(x)
 	})
 	fmt.Println(url)
 	router.Run("localhost:8080")
