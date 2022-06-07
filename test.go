@@ -56,8 +56,12 @@ func getArticle(c *gin.Context) {
 		fmt.Println(err)
 	}
 
-	c.IndentedJSON(http.StatusOK, csvLines)
 	defer csvFile.Close()
+	fmt.Println(csvLines)
+	return csvLines
 }
 
-func getArticle
+func responseArticle(c * gin.Context){
+	x := getArticle
+	c.IndentedJSON(http.StatusOK, x)
+}
