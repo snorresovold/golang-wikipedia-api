@@ -6,17 +6,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/gin-gonic/gin"
 	"github.com/gocolly/colly"
 )
 
 func main() {
-	router := gin.Default()
-
-	router.GET("lol", func(c *gin.Context) {
-		fmt.Println(c.FullPath())
-	})
-	router.Run("localhost:8080")
+	check_site("The_Batman_(film)")
 }
 
 func check_site(x string) { // x is a url to the site you want to scrape
