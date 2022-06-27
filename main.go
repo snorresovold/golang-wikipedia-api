@@ -13,7 +13,7 @@ func main() {
 	check_site("The_Batman_(film)")
 }
 
-func check_site(x string) { // x is a url to the site you want to scrape
+func check_site(x string) {
 	c := colly.NewCollector()
 
 	fName := x + ".csv"
@@ -26,16 +26,17 @@ func check_site(x string) { // x is a url to the site you want to scrape
 
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
-	// On every a element which has href attribute call callback
+
 	c.OnHTML("p", func(e *colly.HTMLElement) {
-		//fmt.Println(e.Text)
 		writer.Write([]string{
 			e.Text,
 		})
 	})
-	// before making a request print "Visiting ..."
+
 	c.OnRequest(func(r *colly.Request) {
 		fmt.Println("Visiting", r.URL.String())
 	})
-	c.Visit("https://en.wikipedia.org/wiki/" + x) // checks x aka the URL
+
+	c.Visit("https://en.wikipedia.org/wiki/" + x)
+
 }
